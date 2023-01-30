@@ -157,7 +157,7 @@ impl Repo {
                 .run_and_wait()
                 .map_err(Error::FetchFailed)?;
             self.git()
-                .command_parse("reset --hard origin/master")
+                .command_parse("reset --hard origin/release")
                 .run_and_wait()
                 .map_err(Error::ResetFailed)?;
             self.git()
