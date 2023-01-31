@@ -137,7 +137,7 @@ impl Repo {
                 })?;
             }
             Git::new(parent)
-                .command_parse("clone --depth 1 --single-branch")
+                .command_parse("clone --depth 1 --single-branch --branch cargo-update-branch-fix")
                 .with_arg(url)
                 .with_arg(path)
                 .run_and_wait()
@@ -157,7 +157,7 @@ impl Repo {
                 .run_and_wait()
                 .map_err(Error::FetchFailed)?;
             self.git()
-                .command_parse("reset --hard origin/release")
+                .command_parse("reset --hard origin/cargo-update-branch-fix")
                 .run_and_wait()
                 .map_err(Error::ResetFailed)?;
             self.git()
